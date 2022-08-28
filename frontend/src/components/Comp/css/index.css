@@ -1,0 +1,22 @@
+.st1ack-index {
+  /* min-width: fit-content; */
+  display: flex;
+
+  min-height: 85vh;
+}
+@media only screen and (min-width: 400px)  {
+  .stack-index-content {
+    width: 800px;
+    display: flex;
+    /* align-items: center; */
+    margin: auto;
+
+  }
+}
+
+.s1tack-index-content {
+  display: flex;
+  width: auto;
+  /* align-items: center; */
+  /* justify-content: center; */
+}
