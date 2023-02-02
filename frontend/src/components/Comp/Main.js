@@ -19,7 +19,7 @@ function Main({ questions }) {
           {/* </a> */}
         </div>
         <div className="main-desc">
-          <p> total questions {questions.length}</p>
+          <p> total questions  {questions.length}</p>
           <div className="main-filter">
            
             

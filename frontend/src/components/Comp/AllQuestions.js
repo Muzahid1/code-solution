@@ -20,7 +20,7 @@ function AllQuestions({ data }) {
           <div className="all-options">
             <div className="all-option">
              {/* <span> {document.write(window.innerWidth)}</span> */}
-              <span>total answer</span>
+              <span>total answer </span>
               <p>{data?.answerDetails?.length}</p>
             </div>
 

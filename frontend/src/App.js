@@ -14,6 +14,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { login, logout, selectUser } from "./feature/userSlice";
 import { useEffect } from "react";
 import { auth } from "./firebase";
+import Bottom from "./components/Comp/Bottom";
 
 function App() {
 
@@ -47,7 +48,7 @@ function App() {
           <Component {...props} />
         ) : (
           <Redirect
-            to={{
+            to={{     
               pathname: "/auth",
               state: {
                 from: props.location,
@@ -70,6 +71,7 @@ function App() {
           <PrivateRoute exact path="/add-question" component={AddQuestion} />
           <PrivateRoute exact path="/question" component={ViewQuestion} />
         </Switch>
+     
       </Router>
     </div>
   );

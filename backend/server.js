@@ -31,12 +31,12 @@ app.get("*", (req, res) => {
   try {
     res.sendFile(path.join(`${__dirname}/../frontend/build/index.html`));
   } catch (e) {
-    res.send("Welcome to stackoverflow clone");
+    res.send("Welcome to code solution");
   }
 });
 
 app.use(cors());
 
 app.listen(PORT, () => {
-  console.log(`Stack Overflow Clone API is running on PORT No- ${PORT}`);
+  console.log(`code solution API is running on PORT No- ${PORT}`);
 });

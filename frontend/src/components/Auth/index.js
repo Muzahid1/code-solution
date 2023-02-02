@@ -3,12 +3,18 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
 } from "firebase/auth";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { selectUser } from "../../feature/userSlice";
+import { logout } from "../../feature/userSlice";
 import { useHistory } from "react-router-dom";
 import { auth, provider } from "../../firebase";
 import "./index.css";
+import Bottom from "../Comp/Bottom";
 
 function Index() {
+  const selectuser = useSelector(selectUser)
+  const dispatch = useDispatch()
   const history = useHistory();
   const [register, setRegister] = useState(false);
   const [email, setEmail] = useState("");
@@ -16,6 +22,12 @@ function Index() {
   const [username, setUsername] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+ const [user, setuser] =useState()
+
+ useEffect(()=>{
+       selectuser ? setuser(selectuser) : setuser(null)
+ },[])
+  // console.log(user);
 
   function validateEmail(email) {
     const reg = /^([A-Za-z0-9_\-.])+@([A-Za-z0-9_\-.])+\.([A-Za-z]{2,4})$/;
@@ -43,6 +55,11 @@ function Index() {
       });
   };
 
+  function lgout (){
+     dispatch(logout)
+     setuser(null)
+  }
+
   const handleSignIn = () => {
     setError();
     setLoading(true);
@@ -51,7 +68,7 @@ function Index() {
       setLoading(false);
     } else if (!validateEmail(email)) {
       setError("Email is malformed");
-      setLoading(false);
+      setLoading(false);             
     } else {
       signInWithEmailAndPassword(auth, email, password)
         .then((res) => {
@@ -92,6 +109,22 @@ function Index() {
   };
   return (
     <div className="auth">
+              {user ? 
+            
+            <div  className="auth-container">
+              <div className="auth-detail"  style={{display : "flex", fontSize: "25px",  flexDirection: "column", alignitems : "center"}}>
+              <center><img style={{height : "100px", width : "100px", borderRadius : "50%"}} src={user.photo}></img></center>
+              &nbsp;
+              <p>hello {user.displayName}</p>
+              <p>Email : {user.email}</p>
+              <p>Uid : {user.uid}</p>
+              <button onClick={lgout} >logout</button>
+              </div>
+
+              <Bottom/>
+            </div> : 
+            
+            
       <div className="auth-container">
         <p>Add another way to log in using any of the following services. </p>
         <div className="sign-options">
@@ -118,8 +151,8 @@ function Index() {
           </div>
         </div>
         <div className="auth-login">
-          <div className="auth-login-container">
-            {register ? (
+          {/* <div className="auth-login-container"> */}
+            {/* {register ? (
               <>
                 {" "}
                 <div className="input-field">
@@ -189,8 +222,8 @@ function Index() {
               }}
             >
               {register ? "Login" : "Register"} ?
-            </p>
-          </div>
+            </p> */}
+          {/* </div> */}
         </div>
         {error !== "" && (
           <p
@@ -202,7 +235,8 @@ function Index() {
             {error}
           </p>
         )}
-      </div>
+      <Bottom/>
+      </div> }
     </div>
   );
 }

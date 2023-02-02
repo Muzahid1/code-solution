@@ -7,6 +7,18 @@
   padding: 30px 0;
   background-color: #eee;
 }
+.auth-detail {
+  margin-top: 60px;
+  border: 2px black;
+  padding: 20px;
+  color: #064500;
+  background-color: rgb(240 242 245);
+  border-radius: 8px;
+  box-shadow: -1px 5px 5px 5px #bfc0cc7d;
+}
+.auth-detail button {
+  margin-top: 40px;
+}
 
 .auth-container {
   display: flex;

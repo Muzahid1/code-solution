@@ -254,6 +254,7 @@ function MainQuestion() {
             {questionData && questionData?.answerDetails.length} Answers
           </p>
           {questionData?.answerDetails.map((_q) => (
+            
             <>
               <div
                 style={{
@@ -271,7 +272,7 @@ function MainQuestion() {
                   {ReactHtmlParser(_q.answer)}
                   <div className="author">
                     <small>
-                      asked {new Date(_q.created_at).toLocaleString()}
+                      answered {new Date(_q.created_at).toLocaleString()}
                     </small>
                     <div className="auth-details">
                       <Avatar {...stringAvatar(_q?.user?.displayName)} />

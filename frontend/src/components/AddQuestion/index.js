@@ -69,8 +69,10 @@ function Index() {
   const [body, setBody] = useState("");
   const [tag, setTag] = useState([]);
   const history = useHistory();
+  // console.log(tag);
 
   const handleQuill = (value) => {
+    console.log(value);
     setBody(value);
   };
 
@@ -96,6 +98,7 @@ function Index() {
         });
     }
   };
+
   return (
     <div className="add-question">
       <div className="add-question-container">
@@ -127,7 +130,7 @@ function Index() {
                   question
                 </small>
                 <ReactQuill
-                  value={body}
+                  valu={body}
                   onChange={handleQuill}
                   modules={Editor.modules}
                   className="react-quill"
